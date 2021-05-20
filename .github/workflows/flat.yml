@@ -1,0 +1,23 @@
+name: data
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+  push:
+    paths:
+      - .github/workflows/flat.yml
+      - ./.github/workflows/resolve.js
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup deno
+        uses: denolib/setup-deno@v2
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Fetch data
+        uses: githubocto/flat@v2
+        with:
+          http_url: https://github.com/bketelsen/bkapi/releases/download/blox/data.json
+          downloaded_filename: lib/data.json
+          postprocess: ./.github/workflows/resolve.js
