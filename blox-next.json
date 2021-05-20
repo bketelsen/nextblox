@@ -1,0 +1,13 @@
+{
+  "data": "lib/data.json",
+  "pages": {
+    "contentPath": "content/pages",
+    "basePath": "/",
+    "sortOrder": "desc",
+    "sortBy": "title"
+  },
+  "articles": {
+    "contentPath": "content/pages",
+    "basePath": "/"
+  }
+}
